@@ -1032,6 +1032,7 @@ where
     }
 }
 
+#[cfg(not(feature = "compact-display"))]
 impl<N, R: Dim, C: Dim, S> fmt::Display for Matrix<N, R, C, S>
 where
     N: Scalar + fmt::Display,
@@ -1100,6 +1101,70 @@ where
             width = max_length_with_space * ncols - 1
         ));
         writeln!(f)
+    }
+}
+
+#[cfg(feature = "compact-display")]
+impl<N, R: Dim, C: Dim, S> fmt::Display for Matrix<N, R, C, S>
+where
+    N: Scalar + fmt::Display,
+    S: Storage<N, R, C>,
+    DefaultAllocator: Allocator<usize, R, C>,
+{
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let (nrows, ncols) = self.data.shape();
+
+        if nrows.value() == 0 || ncols.value() == 0 {
+            return write!(f, "()");
+        }
+
+        let (nrows, ncols) = self.shape();
+
+        if ncols == 1 {
+            // if we're a column vector, then print transposed
+            try!(write!(f, "("));
+            let mut first_col = true;
+            for j in 0..nrows {
+                if first_col {
+                    first_col = false;
+                } else {
+                    try!(write!(f, ", "));
+                }
+                try!(write!(f, "{}", (*self)[(j, 0)]));
+            }
+            try!(write!(f, ")"));
+        } else {
+            // if we're a matrix, then wrap each row in parens too
+            if nrows > 1 && ncols > 1 {
+                try!(write!(f, "("));
+            }
+
+            let mut first_row = true;
+            for i in 0..nrows {
+                if first_row {
+                    first_row = false;
+                } else {
+                    try!(write!(f, ", "));
+                }
+                try!(write!(f, "("));
+                let mut first_col = true;
+                for j in 0..ncols {
+                    if first_col {
+                        first_col = false;
+                    } else {
+                        try!(write!(f, ", "));
+                    }
+                    try!(write!(f, "{}", (*self)[(i, j)]));
+                }
+                try!(write!(f, ")"));
+            }
+
+            if nrows > 1 && ncols > 1 {
+                try!(write!(f, ")"));
+            }
+        };
+
+        Ok(())
     }
 }
 

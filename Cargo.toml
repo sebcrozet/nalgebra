@@ -25,6 +25,7 @@ serde-serialize = [ "serde", "serde_derive", "num-complex/serde" ]
 abomonation-serialize = [ "abomonation" ]
 debug = [ ]
 alloc = [ ]
+compact-display = []
 
 [dependencies]
 typenum        = "1.10"
