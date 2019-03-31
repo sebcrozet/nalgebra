@@ -37,7 +37,7 @@ rand           = { version = "0.6", default-features = false }
 num-traits     = { version = "0.2", default-features = false }
 num-complex    = { version = "0.2", default-features = false }
 approx         = { version = "0.3", default-features = false }
-alga           = { version = "0.8", default-features = false }
+alga           = { git = "http://github.com/jojolepro/alga", branch = "finite", default-features = false }
 matrixmultiply = { version = "0.2", optional = true }
 serde          = { version = "1.0", optional = true }
 serde_derive   = { version = "1.0", optional = true }
