@@ -50,7 +50,7 @@ impl<N: Scalar, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
     ///
     /// let u = Vector3::new(-1.0, 3.0, 2.0);
     /// let v = Vector3::new(1.0, 2.0, 3.0);
-    /// assert_eq!(u.component_min(v), Vector3::new(-1.0, 2.0, 3.0))
+    /// assert_eq!(u.component_min(&v), Vector3::new(-1.0, 2.0, 3.0))
     /// ```
     pub fn component_min(&self, rhs: &Matrix<N, R, C, S>) -> MatrixMN<N, R, C>
     where
@@ -69,7 +69,7 @@ impl<N: Scalar, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
     ///
     /// let u = Vector3::new(-1.0, 3.0, 2.0);
     /// let v = Vector3::new(1.0, 2.0, 3.0);
-    /// assert_eq!(u.component_max(v), Vector3::new(1.0, 3.0, 3.0))
+    /// assert_eq!(u.component_max(&v), Vector3::new(1.0, 3.0, 3.0))
     /// ```
     pub fn component_max(&self, rhs: &Matrix<N, R, C, S>) -> MatrixMN<N, R, C>
     where
