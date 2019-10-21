@@ -1,6 +1,7 @@
 // Non-conventional component-wise operators.
 
 use num::{Signed, Zero};
+use std::cmp::Ord;
 use std::ops::{Add, Mul};
 
 use alga::general::{ClosedDiv, ClosedMul};
@@ -38,6 +39,44 @@ impl<N: Scalar, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
         }
 
         res
+    }
+
+    /// Computes the component-wise minimum
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use nalgebra::Vector3;
+    ///
+    /// let u = Vector3::new(-1.0, 3.0, 2.0);
+    /// let v = Vector3::new(1.0, 2.0, 3.0);
+    /// assert_eq!(u.component_min(v), Vector3::new(-1.0, 2.0, 3.0))
+    /// ```
+    pub fn component_min(&self, rhs: &Matrix<N, R, C, S>) -> MatrixMN<N, R, C>
+    where
+        N: Ord,
+        DefaultAllocator: Allocator<N, R, C>,
+    {
+        self.zip_map(rhs, |a, b| a.min(b))
+    }
+
+    /// Computes the component-wise maximum
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use nalgebra::Vector3;
+    ///
+    /// let u = Vector3::new(-1.0, 3.0, 2.0);
+    /// let v = Vector3::new(1.0, 2.0, 3.0);
+    /// assert_eq!(u.component_max(v), Vector3::new(1.0, 3.0, 3.0))
+    /// ```
+    pub fn component_max(&self, rhs: &Matrix<N, R, C, S>) -> MatrixMN<N, R, C>
+    where
+        N: Ord,
+        DefaultAllocator: Allocator<N, R, C>,
+    {
+        self.zip_map(rhs, |a, b| a.min(b))
     }
 
     // FIXME: add other operators like component_ln, component_pow, etc. ?
