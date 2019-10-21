@@ -76,7 +76,7 @@ impl<N: Scalar, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
         N: Ord,
         DefaultAllocator: Allocator<N, R, C>,
     {
-        self.zip_map(rhs, |a, b| a.min(b))
+        self.zip_map(rhs, |a, b| a.max(b))
     }
 
     // FIXME: add other operators like component_ln, component_pow, etc. ?
