@@ -7,7 +7,7 @@ use rand::distributions::{Distribution, OpenClosed01, Standard};
 use rand::Rng;
 
 use alga::general::RealField;
-use crate::base::dimension::{U1, U2};
+use crate::{U1, U2};
 use crate::base::storage::Storage;
 use crate::base::{Unit, Vector, Matrix2};
 use crate::geometry::{Rotation2, UnitComplex};

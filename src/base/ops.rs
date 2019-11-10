@@ -11,7 +11,7 @@ use crate::base::allocator::{Allocator, SameShapeAllocator, SameShapeC, SameShap
 use crate::base::constraint::{
     AreMultipliable, DimEq, SameNumberOfColumns, SameNumberOfRows, ShapeConstraint,
 };
-use crate::base::dimension::{Dim, DimMul, DimName, DimProd, Dynamic};
+use crate::{Dim, DimMul, DimName, DimProd, Dynamic};
 use crate::base::storage::{ContiguousStorageMut, Storage, StorageMut};
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, MatrixN, MatrixSum, Scalar, VectorSliceN};
 

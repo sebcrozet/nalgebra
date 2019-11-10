@@ -7,7 +7,7 @@ use alga::general::{ClosedDiv, ClosedMul};
 
 use crate::base::allocator::{Allocator, SameShapeAllocator};
 use crate::base::constraint::{SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
-use crate::base::dimension::Dim;
+use crate::Dim;
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, MatrixSum, Scalar};
 

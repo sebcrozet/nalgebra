@@ -131,22 +131,20 @@ extern crate pest;
 #[cfg(feature = "io")]
 extern crate pest_derive;
 
-pub mod base;
+mod base;
+pub mod dimension;
 #[cfg(feature = "debug")]
 pub mod debug;
-pub mod geometry;
+mod geometry;
 #[cfg(feature = "io")]
 pub mod io;
-pub mod linalg;
+mod linalg;
 #[cfg(feature = "sparse")]
-pub mod sparse;
+mod sparse;
 
 #[cfg(feature = "std")]
-#[deprecated(
-    note = "The 'core' module is being renamed to 'base' to avoid conflicts with the 'core' crate."
-)]
-pub use base as core;
 pub use crate::base::*;
+pub use crate::dimension::*;
 pub use crate::geometry::*;
 pub use crate::linalg::*;
 #[cfg(feature = "sparse")]

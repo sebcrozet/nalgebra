@@ -4,7 +4,7 @@ use num::Zero;
 use alga::general::ComplexField;
 use crate::allocator::Allocator;
 use crate::base::{DefaultAllocator, MatrixMN, MatrixN, Unit, Vector, VectorN};
-use crate::dimension::Dim;
+use crate::Dim;
 use crate::storage::{Storage, StorageMut};
 
 use crate::geometry::Reflection;

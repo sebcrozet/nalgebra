@@ -5,7 +5,7 @@ use alga::general::{Field, ComplexField};
 use crate::allocator::{Allocator, Reallocator};
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar};
 use crate::constraint::{SameNumberOfRows, ShapeConstraint};
-use crate::dimension::{Dim, DimMin, DimMinimum};
+use crate::{Dim, DimMin, DimMinimum};
 use std::mem;
 use crate::storage::{Storage, StorageMut};
 

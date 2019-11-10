@@ -8,7 +8,7 @@ use alga::general::{RealField, ComplexField};
 use crate::allocator::Allocator;
 use crate::base::{DefaultAllocator, Matrix, Matrix2x3, MatrixMN, Vector2, VectorN};
 use crate::constraint::{SameNumberOfRows, ShapeConstraint};
-use crate::dimension::{Dim, DimDiff, DimMin, DimMinimum, DimSub, U1, U2};
+use crate::{Dim, DimDiff, DimMin, DimMinimum, DimSub, U1, U2};
 use crate::storage::Storage;
 
 use crate::linalg::symmetric_eigen;

@@ -7,8 +7,8 @@ use num::One;
 use crate::allocator::Allocator;
 use crate::base::{DefaultAllocator, Matrix, Scalar, VectorN};
 #[cfg(any(feature = "std", feature = "alloc"))]
-use crate::dimension::Dynamic;
-use crate::dimension::{Dim, DimName, U1};
+use crate::Dynamic;
+use crate::{Dim, DimName, U1};
 use crate::storage::StorageMut;
 
 /// A sequence of row or column permutations.

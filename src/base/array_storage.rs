@@ -23,7 +23,7 @@ use typenum::Prod;
 
 use crate::base::allocator::Allocator;
 use crate::base::default_allocator::DefaultAllocator;
-use crate::base::dimension::{DimName, U1};
+use crate::{DimName, U1};
 use crate::base::storage::{ContiguousStorage, ContiguousStorageMut, Owned, Storage, StorageMut};
 use crate::base::Scalar;
 

@@ -1,4 +1,4 @@
-use crate::base::dimension::{U2, U3};
+use crate::{U2, U3};
 
 use crate::geometry::{Rotation2, Rotation3, Similarity, UnitComplex, UnitQuaternion};
 

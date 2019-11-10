@@ -7,7 +7,7 @@ use approx::AbsDiffEq;
 use alga::general::ComplexField;
 use crate::allocator::Allocator;
 use crate::base::{DefaultAllocator, Matrix2, MatrixN, SquareMatrix, Vector2, VectorN};
-use crate::dimension::{Dim, DimDiff, DimSub, U1, U2};
+use crate::{Dim, DimDiff, DimSub, U1, U2};
 use crate::storage::Storage;
 
 use crate::linalg::givens::GivensRotation;

@@ -6,7 +6,7 @@ use alga::general::ComplexField;
 use crate::allocator::Allocator;
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, MatrixN, SquareMatrix};
 use crate::constraint::{SameNumberOfRows, ShapeConstraint};
-use crate::dimension::{Dim, DimSub, Dynamic};
+use crate::{Dim, DimSub, Dynamic};
 use crate::storage::{Storage, StorageMut};
 
 /// The Cholesky decomposition of a symmetric-definite-positive matrix.

@@ -11,11 +11,11 @@ use typenum::Prod;
 
 use crate::base::allocator::{Allocator, SameShapeAllocator};
 use crate::base::constraint::{SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
-use crate::base::dimension::{
+use crate::{
     Dim, DimName, U1, U10, U11, U12, U13, U14, U15, U16, U2, U3, U4, U5, U6, U7, U8, U9,
 };
 #[cfg(any(feature = "std", feature = "alloc"))]
-use crate::base::dimension::Dynamic;
+use crate::Dynamic;
 use crate::base::iter::{MatrixIter, MatrixIterMut};
 use crate::base::storage::{ContiguousStorage, ContiguousStorageMut, Storage, StorageMut};
 #[cfg(any(feature = "std", feature = "alloc"))]

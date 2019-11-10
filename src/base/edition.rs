@@ -9,8 +9,8 @@ use std::ptr;
 use crate::base::allocator::{Allocator, Reallocator};
 use crate::base::constraint::{DimEq, SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
 #[cfg(any(feature = "std", feature = "alloc"))]
-use crate::base::dimension::Dynamic;
-use crate::base::dimension::{
+use crate::Dynamic;
+use crate::{
     Dim, DimAdd, DimDiff, DimMin, DimMinimum, DimName, DimSub, DimSum, U1,
 };
 use crate::base::storage::{Storage, StorageMut};

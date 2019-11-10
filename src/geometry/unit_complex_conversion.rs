@@ -4,7 +4,7 @@ use num_complex::Complex;
 use alga::general::{RealField, SubsetOf, SupersetOf};
 use alga::linear::Rotation as AlgaRotation;
 
-use crate::base::dimension::U2;
+use crate::U2;
 use crate::base::{Matrix2, Matrix3};
 use crate::geometry::{
     Isometry, Point2, Rotation2, Similarity, SuperTCategoryOf, TAffine, Transform, Translation,

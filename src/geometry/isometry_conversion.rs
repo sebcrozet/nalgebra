@@ -2,7 +2,7 @@ use alga::general::{RealField, SubsetOf, SupersetOf};
 use alga::linear::Rotation;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimMin, DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimMin, DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::{DefaultAllocator, MatrixN};
 
 use crate::geometry::{Isometry, Point, Similarity, SuperTCategoryOf, TAffine, Transform, Translation};

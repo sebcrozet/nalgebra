@@ -8,7 +8,7 @@ use alga::linear::{
 };
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::DimName;
+use crate::DimName;
 use crate::base::{DefaultAllocator, VectorN};
 
 use crate::geometry::{Point, Rotation};

@@ -3,7 +3,7 @@
 use std::any::Any;
 
 use crate::base::constraint::{SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
-use crate::base::dimension::{Dim, U1};
+use crate::{Dim, U1};
 use crate::base::storage::ContiguousStorageMut;
 use crate::base::{DefaultAllocator, Scalar};
 

@@ -3,7 +3,7 @@ use num::Zero;
 use crate::allocator::Allocator;
 use crate::{RealField, ComplexField};
 use crate::storage::{Storage, StorageMut};
-use crate::base::{DefaultAllocator, Matrix, Dim, MatrixMN};
+use crate::{DefaultAllocator, Matrix, Dim, MatrixMN};
 use crate::constraint::{SameNumberOfRows, SameNumberOfColumns, ShapeConstraint};
 
 

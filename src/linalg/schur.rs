@@ -7,7 +7,7 @@ use num_complex::Complex as NumComplex;
 use std::cmp;
 
 use crate::allocator::Allocator;
-use crate::base::dimension::{Dim, DimDiff, DimSub, Dynamic, U1, U2, U3};
+use crate::{Dim, DimDiff, DimSub, Dynamic, U1, U2, U3};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, MatrixN, SquareMatrix, Unit, Vector2, Vector3, VectorN};
 

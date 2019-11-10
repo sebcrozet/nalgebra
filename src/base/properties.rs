@@ -5,7 +5,7 @@ use num::{One, Zero};
 use alga::general::{ClosedAdd, ClosedMul, RealField, ComplexField};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{Dim, DimMin};
+use crate::{Dim, DimMin};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, Matrix, Scalar, SquareMatrix};
 

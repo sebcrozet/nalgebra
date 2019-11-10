@@ -1,5 +1,5 @@
 use crate::base::allocator::Allocator;
-use crate::base::{DefaultAllocator, DimName, Scalar};
+use crate::{DefaultAllocator, DimName, Scalar};
 use crate::geometry::{Point, Point2, Point3};
 use typenum::{self, Cmp, Greater};
 

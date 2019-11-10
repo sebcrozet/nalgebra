@@ -4,7 +4,7 @@ use alga::general::{ClosedAdd, ClosedSub};
 
 use crate::base::allocator::{Allocator, SameShapeAllocator};
 use crate::base::constraint::{SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
-use crate::base::dimension::{DimName, U1};
+use crate::{DimName, U1};
 use crate::base::{DefaultAllocator, Scalar};
 
 use crate::geometry::{Point, Translation};

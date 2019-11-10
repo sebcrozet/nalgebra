@@ -9,7 +9,7 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use alga::general::{RealField, TwoSidedInverse};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::storage::Owned;
 use crate::base::{DefaultAllocator, MatrixN, VectorN};
 

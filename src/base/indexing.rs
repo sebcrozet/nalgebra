@@ -1,6 +1,6 @@
 //! Indexing
 
-use crate::base::{Dim, DimName, DimDiff, DimSub, Dynamic, Matrix, MatrixSlice, MatrixSliceMut, Scalar, U1};
+use crate::{Dim, DimName, DimDiff, DimSub, Dynamic, Matrix, MatrixSlice, MatrixSliceMut, Scalar, U1};
 use crate::base::storage::{Storage, StorageMut};
 
 use std::ops;
@@ -42,7 +42,7 @@ impl<D: Dim> DimRange<D> for usize {
 
 #[test]
 fn dimrange_usize() {
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&0, U0), false);
     assert_eq!(DimRange::contained_by(&0, U1), true);
 }
@@ -69,7 +69,7 @@ impl<D: Dim> DimRange<D> for ops::Range<usize> {
 #[test]
 fn dimrange_range_usize() {
     use std::usize::MAX;
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&(0..0), U0), false);
     assert_eq!(DimRange::contained_by(&(0..1), U0), false);
     assert_eq!(DimRange::contained_by(&(0..1), U1), true);
@@ -101,7 +101,7 @@ impl<D: Dim> DimRange<D> for ops::RangeFrom<usize> {
 #[test]
 fn dimrange_rangefrom_usize() {
     use std::usize::MAX;
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&(0..), U0), false);
     assert_eq!(DimRange::contained_by(&(0..), U0), false);
     assert_eq!(DimRange::contained_by(&(0..), U1), true);
@@ -133,7 +133,7 @@ where D: DimSub<T>
 
 #[test]
 fn dimrange_rangefrom_dimname() {
-    use crate::base::dimension::{U5, U4};
+    use crate::{U5, U4};
     assert_eq!(DimRange::length(&(U1..), U5), U4);
 }
 
@@ -158,7 +158,7 @@ impl<D: Dim> DimRange<D> for ops::RangeFull {
 
 #[test]
 fn dimrange_rangefull() {
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&(..), U0), true);
     assert_eq!(DimRange::length(&(..), U1), U1);
 }
@@ -190,7 +190,7 @@ impl<D: Dim> DimRange<D> for ops::RangeInclusive<usize> {
 #[test]
 fn dimrange_rangeinclusive_usize() {
     use std::usize::MAX;
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&(0..=0), U0), false);
     assert_eq!(DimRange::contained_by(&(0..=0), U1), true);
     assert_eq!(DimRange::contained_by(&(MAX..=MAX), Dynamic::new(MAX)), false);
@@ -225,7 +225,7 @@ impl<D: Dim> DimRange<D> for ops::RangeTo<usize>
 #[test]
 fn dimrange_rangeto_usize() {
     use std::usize::MAX;
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&(..0), U0), true);
     assert_eq!(DimRange::contained_by(&(..1), U0), false);
     assert_eq!(DimRange::contained_by(&(..0), U1), true);
@@ -257,7 +257,7 @@ impl<D: Dim> DimRange<D> for ops::RangeToInclusive<usize>
 #[test]
 fn dimrange_rangetoinclusive_usize() {
     use std::usize::MAX;
-    use crate::base::dimension::U0;
+    use crate::U0;
     assert_eq!(DimRange::contained_by(&(..=0), U0), false);
     assert_eq!(DimRange::contained_by(&(..=1), U0), false);
     assert_eq!(DimRange::contained_by(&(..=0), U1), true);

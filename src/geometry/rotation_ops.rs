@@ -24,7 +24,7 @@ use alga::general::{ClosedAdd, ClosedMul};
 
 use crate::base::allocator::Allocator;
 use crate::base::constraint::{AreMultipliable, ShapeConstraint};
-use crate::base::dimension::{Dim, DimName, U1};
+use crate::{Dim, DimName, U1};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, Scalar, Unit, Vector, VectorN};
 

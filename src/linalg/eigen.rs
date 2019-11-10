@@ -8,7 +8,7 @@ use std::fmt::Display;
 use std::ops::MulAssign;
 
 use crate::allocator::Allocator;
-use crate::base::dimension::{Dim, DimDiff, DimSub, Dynamic, U1, U2, U3};
+use crate::{Dim, DimDiff, DimSub, Dynamic, U1, U2, U3};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, Hessenberg, MatrixN, SquareMatrix, Unit, Vector2, Vector3, VectorN};
 use crate::constraint::{DimEq, ShapeConstraint};

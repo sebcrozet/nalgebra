@@ -18,7 +18,7 @@ use alga::general::RealField;
 use alga::general::{ClosedAdd, ClosedMul};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{Dim, DimName, Dynamic, U1, U2, U3, U4, U5, U6};
+use crate::{Dim, DimName, Dynamic, U1, U2, U3, U4, U5, U6};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, MatrixN, Scalar, Unit, Vector, VectorN};
 

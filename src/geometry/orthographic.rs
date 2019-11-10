@@ -9,7 +9,7 @@ use std::mem;
 
 use alga::general::RealField;
 
-use crate::base::dimension::U3;
+use crate::U3;
 use crate::base::helper;
 use crate::base::storage::Storage;
 use crate::base::{Matrix4, Vector, Vector3};

@@ -13,7 +13,7 @@ use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use abomonation::Abomonation;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::iter::{MatrixIter, MatrixIterMut};
 use crate::base::{DefaultAllocator, Scalar, VectorN};
 

@@ -6,7 +6,7 @@ use quickcheck::{Arbitrary, Gen};
 use alga::general::ComplexField;
 use crate::base::Scalar;
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{Dim, Dynamic, U2};
+use crate::{Dim, Dynamic, U2};
 use crate::base::{DefaultAllocator, MatrixN};
 use crate::linalg::givens::GivensRotation;
 

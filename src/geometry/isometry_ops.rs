@@ -4,7 +4,7 @@ use alga::general::RealField;
 use alga::linear::Rotation as AlgaRotation;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, U1, U3, U4};
+use crate::{DimName, U1, U3, U4};
 use crate::base::{DefaultAllocator, Unit, VectorN};
 
 use crate::geometry::{Isometry, Point, Rotation, Translation, UnitQuaternion};

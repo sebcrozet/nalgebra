@@ -1,4 +1,4 @@
-use crate::base::dimension::{U2, U3};
+use crate::{U2, U3};
 
 use crate::geometry::{TAffine, TGeneral, TProjective, Transform};
 

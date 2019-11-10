@@ -11,7 +11,7 @@ use alga::general::RealField;
 use alga::linear::Rotation as AlgaRotation;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, U2, U3};
+use crate::{DimName, U2, U3};
 use crate::base::{DefaultAllocator, Vector2, Vector3};
 
 use crate::geometry::{

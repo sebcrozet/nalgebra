@@ -1,6 +1,6 @@
 //! Compatibility constraints between matrix shapes, e.g., for addition or multiplication.
 
-use crate::base::dimension::{Dim, DimName, Dynamic};
+use crate::{Dim, DimName, Dynamic};
 
 /// A type used in `where` clauses for enforcing constraints.
 pub struct ShapeConstraint;

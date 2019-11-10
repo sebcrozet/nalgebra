@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 use alga::general::ComplexField;
 use crate::allocator::Allocator;
 use crate::base::{DefaultAllocator, MatrixMN, MatrixN, SquareMatrix, VectorN};
-use crate::dimension::{DimDiff, DimSub, U1};
+use crate::{DimDiff, DimSub, U1};
 use crate::storage::Storage;
 
 use crate::linalg::householder;

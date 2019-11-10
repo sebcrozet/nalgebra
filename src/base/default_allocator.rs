@@ -16,8 +16,8 @@ use typenum::Prod;
 
 use crate::base::allocator::{Allocator, Reallocator};
 #[cfg(any(feature = "alloc", feature = "std"))]
-use crate::base::dimension::Dynamic;
-use crate::base::dimension::{Dim, DimName};
+use crate::Dynamic;
+use crate::{Dim, DimName};
 use crate::base::array_storage::ArrayStorage;
 #[cfg(any(feature = "std", feature = "alloc"))]
 use crate::base::vec_storage::VecStorage;

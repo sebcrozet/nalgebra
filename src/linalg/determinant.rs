@@ -1,7 +1,7 @@
 use alga::general::ComplexField;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::DimMin;
+use crate::DimMin;
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, SquareMatrix};
 

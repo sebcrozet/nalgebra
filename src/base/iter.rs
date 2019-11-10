@@ -3,7 +3,7 @@
 use std::marker::PhantomData;
 use std::mem;
 
-use crate::base::dimension::{Dim, U1};
+use crate::{Dim, U1};
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{Scalar, Matrix, MatrixSlice, MatrixSliceMut};
 

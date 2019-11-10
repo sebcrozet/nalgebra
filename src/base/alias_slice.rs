@@ -1,4 +1,4 @@
-use crate::base::dimension::{Dynamic, U1, U2, U3, U4, U5, U6};
+use crate::{Dynamic, U1, U2, U3, U4, U5, U6};
 use crate::base::matrix_slice::{SliceStorage, SliceStorageMut};
 use crate::base::Matrix;
 

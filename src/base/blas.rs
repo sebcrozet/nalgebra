@@ -9,7 +9,7 @@ use crate::base::allocator::Allocator;
 use crate::base::constraint::{
     AreMultipliable, DimEq, SameNumberOfColumns, SameNumberOfRows, ShapeConstraint,
 };
-use crate::base::dimension::{Dim, Dynamic, U1, U2, U3, U4};
+use crate::{Dim, Dynamic, U1, U2, U3, U4};
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{DefaultAllocator, Matrix, Scalar, SquareMatrix, Vector, DVectorSlice, VectorSliceN};
 

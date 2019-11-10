@@ -3,7 +3,7 @@
 use alga::general::ComplexField;
 use num::{Zero, One};
 
-use crate::base::dimension::{Dim, U2};
+use crate::{Dim, U2};
 use crate::base::constraint::{ShapeConstraint, DimEq};
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{Vector, Matrix};

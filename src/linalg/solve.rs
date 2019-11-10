@@ -2,7 +2,7 @@ use alga::general::ComplexField;
 
 use crate::base::allocator::Allocator;
 use crate::base::constraint::{SameNumberOfRows, ShapeConstraint};
-use crate::base::dimension::{Dim, U1};
+use crate::{Dim, U1};
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{DefaultAllocator, Matrix, MatrixMN, SquareMatrix, Vector, DVectorSlice};
 

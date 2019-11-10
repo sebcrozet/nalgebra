@@ -2,7 +2,7 @@ use std::ops::{Div, DivAssign, Mul, MulAssign};
 
 use alga::general::RealField;
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{U1, U2};
+use crate::{U1, U2};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, Unit, Vector, Vector2};
 use crate::geometry::{Isometry, Point2, Rotation, Similarity, Translation, UnitComplex};

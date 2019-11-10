@@ -7,7 +7,7 @@ use alga::linear::Rotation as AlgaRotation;
 use mint;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimMin, DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimMin, DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::{DefaultAllocator, Matrix2, Matrix3, Matrix4, MatrixN};
 
 use crate::geometry::{

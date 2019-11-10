@@ -1,4 +1,4 @@
-use crate::base::dimension::{U1, U2, U3, U4, U5, U6};
+use crate::{U1, U2, U3, U4, U5, U6};
 
 use crate::geometry::Translation;
 

@@ -4,7 +4,7 @@ use std::slice;
 
 use crate::base::allocator::Allocator;
 use crate::base::default_allocator::DefaultAllocator;
-use crate::base::dimension::{Dim, DimName, Dynamic, U1, IsNotStaticOne};
+use crate::{Dim, DimName, Dynamic, U1, IsNotStaticOne};
 use crate::base::iter::MatrixIter;
 use crate::base::storage::{Owned, Storage, StorageMut, ContiguousStorage, ContiguousStorageMut};
 use crate::base::{Matrix, Scalar};

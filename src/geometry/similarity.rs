@@ -14,7 +14,7 @@ use alga::general::{RealField, SubsetOf};
 use alga::linear::Rotation;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::storage::Owned;
 use crate::base::{DefaultAllocator, MatrixN, VectorN};
 use crate::geometry::{Isometry, Point, Translation};

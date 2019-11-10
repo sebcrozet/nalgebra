@@ -6,7 +6,7 @@ use alloc::vec::Vec;
 
 use crate::base::allocator::Allocator;
 use crate::base::default_allocator::DefaultAllocator;
-use crate::base::dimension::{Dim, DimName, Dynamic, U1};
+use crate::{Dim, DimName, Dynamic, U1};
 use crate::base::storage::{ContiguousStorage, ContiguousStorageMut, Owned, Storage, StorageMut};
 use crate::base::{Scalar, Vector};
 use crate::base::constraint::{SameNumberOfRows, ShapeConstraint};

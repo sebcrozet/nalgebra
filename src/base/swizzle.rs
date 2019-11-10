@@ -1,4 +1,4 @@
-use crate::base::{DimName, Scalar, Vector, Vector2, Vector3};
+use crate::{DimName, Scalar, Vector, Vector2, Vector3};
 use crate::storage::Storage;
 use typenum::{self, Cmp, Greater};
 

@@ -3,7 +3,7 @@ use num::One;
 use alga::general::RealField;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimNameAdd, DimNameSum, U1};
+use crate::{DimNameAdd, DimNameSum, U1};
 use crate::base::{DefaultAllocator, MatrixN};
 
 use crate::geometry::{TCategory, Transform};

@@ -3,7 +3,7 @@ use num::{One, Zero};
 use alga::general::{ClosedAdd, ClosedMul};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::DimName;
+use crate::DimName;
 use crate::base::{DefaultAllocator, MatrixN, Scalar};
 
 use crate::geometry::Rotation;

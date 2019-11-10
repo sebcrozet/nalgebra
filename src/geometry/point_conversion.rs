@@ -2,11 +2,11 @@ use alga::general::{ClosedDiv, SubsetOf, SupersetOf};
 use num::{One, Zero};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::{DefaultAllocator, Matrix, Scalar, VectorN};
 
 #[cfg(feature = "mint")]
-use crate::base::dimension::{U2, U3};
+use crate::{U2, U3};
 #[cfg(feature = "mint")]
 use crate::base::storage::{Storage, StorageMut};
 use crate::geometry::Point;

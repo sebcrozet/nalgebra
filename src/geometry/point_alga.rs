@@ -2,7 +2,7 @@ use alga::general::{Field, JoinSemilattice, Lattice, MeetSemilattice, RealField}
 use alga::linear::{AffineSpace, EuclideanSpace};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::DimName;
+use crate::DimName;
 use crate::base::{DefaultAllocator, Scalar, VectorN};
 
 use crate::geometry::Point;

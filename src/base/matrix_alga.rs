@@ -14,7 +14,7 @@ use alga::linear::{
 };
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{Dim, DimName};
+use crate::{Dim, DimName};
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{DefaultAllocator, MatrixMN, MatrixN, Scalar};
 

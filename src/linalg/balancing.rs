@@ -4,7 +4,7 @@ use alga::general::RealField;
 use std::ops::{DivAssign, MulAssign};
 
 use crate::allocator::Allocator;
-use crate::base::dimension::{Dim, U1};
+use crate::{Dim, U1};
 use crate::base::storage::Storage;
 use crate::base::{DefaultAllocator, MatrixN, VectorN};
 

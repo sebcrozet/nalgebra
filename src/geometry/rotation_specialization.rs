@@ -9,7 +9,7 @@ use rand::distributions::{Distribution, OpenClosed01, Standard};
 use rand::Rng;
 use std::ops::Neg;
 
-use crate::base::dimension::{U1, U2, U3};
+use crate::{U1, U2, U3};
 use crate::base::storage::Storage;
 use crate::base::{Matrix2, Matrix3, MatrixN, Unit, Vector, Vector1, Vector3, VectorN};
 

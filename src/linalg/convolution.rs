@@ -1,8 +1,8 @@
 use std::cmp;
 
 use crate::base::allocator::Allocator;
-use crate::base::default_allocator::DefaultAllocator;
-use crate::base::dimension::{Dim, DimAdd, DimDiff, DimSub, DimSum};
+use crate::DefaultAllocator;
+use crate::{Dim, DimAdd, DimDiff, DimSub, DimSum};
 use crate::storage::Storage;
 use crate::{zero, RealField, Vector, VectorN, U1};
 

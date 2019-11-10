@@ -6,7 +6,7 @@ use alga::linear::Rotation as AlgaRotation;
 #[cfg(feature = "mint")]
 use mint;
 
-use crate::base::dimension::U3;
+use crate::U3;
 use crate::base::{Matrix3, Matrix4, Vector4};
 use crate::geometry::{
     Isometry, Point3, Quaternion, Rotation, Rotation3, Similarity, SuperTCategoryOf, TAffine,

@@ -7,7 +7,7 @@ use rand::Rng;
 
 use alga::general::ClosedDiv;
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1, U2, U3, U4, U5, U6};
+use crate::{DimName, DimNameAdd, DimNameSum, U1, U2, U3, U4, U5, U6};
 use crate::base::{DefaultAllocator, Scalar, VectorN};
 
 use crate::geometry::Point;

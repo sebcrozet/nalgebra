@@ -10,7 +10,7 @@ use rand::Rng;
 use alga::general::ClosedAdd;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, U1, U2, U3, U4, U5, U6};
+use crate::{DimName, U1, U2, U3, U4, U5, U6};
 use crate::base::{DefaultAllocator, Scalar, VectorN};
 
 use crate::geometry::Translation;

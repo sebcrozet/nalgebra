@@ -8,7 +8,7 @@
 use num::One;
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameDiff, DimNameSub, U1};
+use crate::{DimName, DimNameDiff, DimNameSub, U1};
 use crate::base::storage::{Storage, StorageMut};
 use crate::base::{
     DefaultAllocator, Matrix3, Matrix4, MatrixN, Scalar, SquareMatrix, Unit, Vector, Vector3,

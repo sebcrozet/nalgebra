@@ -5,7 +5,7 @@ use alga::general::{
 use alga::linear::{ProjectiveTransformation, Transformation};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimNameAdd, DimNameSum, U1};
+use crate::{DimNameAdd, DimNameSum, U1};
 use crate::base::{DefaultAllocator, VectorN};
 
 use crate::geometry::{Point, SubTCategoryOf, TCategory, TProjective, Transform};

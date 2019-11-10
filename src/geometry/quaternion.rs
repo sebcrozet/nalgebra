@@ -15,7 +15,7 @@ use abomonation::Abomonation;
 
 use alga::general::RealField;
 
-use crate::base::dimension::{U1, U3, U4};
+use crate::{U1, U3, U4};
 use crate::base::storage::{CStride, RStride};
 use crate::base::{Matrix3, Matrix4, MatrixSlice, MatrixSliceMut, Unit, Vector3, Vector4};
 

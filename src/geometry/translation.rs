@@ -14,7 +14,7 @@ use abomonation::Abomonation;
 use alga::general::{ClosedAdd, ClosedNeg, ClosedSub, RealField};
 
 use crate::base::allocator::Allocator;
-use crate::base::dimension::{DimName, DimNameAdd, DimNameSum, U1};
+use crate::{DimName, DimNameAdd, DimNameSum, U1};
 use crate::base::storage::Owned;
 use crate::base::{DefaultAllocator, MatrixN, Scalar, VectorN};
 

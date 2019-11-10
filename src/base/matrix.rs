@@ -20,7 +20,7 @@ use alga::general::{ClosedAdd, ClosedMul, ClosedSub, RealField, Ring, ComplexFie
 
 use crate::base::allocator::{Allocator, SameShapeAllocator, SameShapeC, SameShapeR};
 use crate::base::constraint::{DimEq, SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
-use crate::base::dimension::{Dim, DimAdd, DimSum, IsNotStaticOne, U1, U2, U3};
+use crate::{Dim, DimAdd, DimSum, IsNotStaticOne, U1, U2, U3};
 use crate::base::iter::{MatrixIter, MatrixIterMut, RowIter, RowIterMut, ColumnIter, ColumnIterMut};
 use crate::base::storage::{
     ContiguousStorage, ContiguousStorageMut, Owned, SameShapeStorage, Storage, StorageMut,

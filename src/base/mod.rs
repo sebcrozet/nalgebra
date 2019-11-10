@@ -4,8 +4,7 @@ pub mod allocator;
 mod blas;
 pub mod constraint;
 pub mod coordinates;
-pub mod default_allocator;
-pub mod dimension;
+mod default_allocator;
 pub mod iter;
 mod ops;
 pub mod storage;
@@ -41,7 +40,6 @@ pub use self::unit::*;
 pub use self::norm::*;
 
 pub use self::default_allocator::*;
-pub use self::dimension::*;
 
 pub use self::alias::*;
 pub use self::alias_slice::*;
