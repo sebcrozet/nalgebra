@@ -4,9 +4,9 @@
 use na::{U2, U3, U4};
 use na::{DMatrix,
          RowVector4,
-         Vector3,
+         Vector3, Vector4,
          Matrix2, Matrix3,
-         Matrix2x3, Matrix3x2, Matrix3x4, Matrix4x2, Matrix2x4, Matrix6x2, Matrix2x6,
+         Matrix2x3, Matrix3x2, Matrix3x4, Matrix4x3, Matrix4x2, Matrix2x4, Matrix6x2, Matrix2x6,
          MatrixSlice2, MatrixSlice3, MatrixSlice2x3, MatrixSlice3x2,
          MatrixSliceXx3, MatrixSlice2xX, DMatrixSlice,
          MatrixSliceMut2, MatrixSliceMut3, MatrixSliceMut2x3, MatrixSliceMut3x2,
@@ -195,6 +195,47 @@ fn columns_range_pair() {
                                   22.0, 23.0, 24.0,
                                   32.0, 33.0, 34.0);
     assert!(l.eq(&expected_l) && r.eq(&expected_r));
+}
+
+#[test]
+fn transposed_slice() {
+    let a = Matrix3x4::new(11.0, 12.0, 13.0, 14.0,
+                           21.0, 22.0, 23.0, 24.0,
+                           31.0, 32.0, 33.0, 34.0);
+    let s1 = a.transposed_slice();
+    let s2_tmp = a.fixed_slice::<U2, U2>(1,2);
+    let s2 = s2_tmp.transposed_slice();
+    let s3_tmp = a.row(0);
+    let s3 = s3_tmp.transposed_slice();
+
+    let expected_owned_s1 = Matrix4x3::new(11.0, 21.0, 31.0,
+                                           12.0, 22.0, 32.0,
+                                           13.0, 23.0, 33.0,
+                                           14.0, 24.0, 34.0);
+    let expected_owned_s2 = Matrix2::new(23.0, 33.0,
+                                         24.0, 34.0);
+    let expected_owned_s3 = Vector4::new(11.0, 12.0, 13.0, 14.0);
+    assert_eq!(expected_owned_s1, s1.clone_owned());
+    assert_eq!(expected_owned_s2, s2.clone_owned());
+    assert_eq!(expected_owned_s3, s3.clone_owned());
+}
+
+#[test]
+fn transposed_slice_mut() {
+    let mut a = Matrix3x4::new(11.0, 12.0, 13.0, 14.0,
+                               21.0, 22.0, 23.0, 24.0,
+                               31.0, 32.0, 33.0, 34.0);
+
+    {
+        let mut s1 = a.transposed_slice_mut();
+        *(s1.index_mut((1,0))) = 0.0;
+        s1.row_mut(3).fill(0.0);
+    }
+
+    let expected_a = Matrix3x4::new(11.0,  0.0, 13.0, 0.0,
+                                    21.0, 22.0, 23.0, 0.0,
+                                    31.0, 32.0, 33.0, 0.0);
+    assert_eq!(expected_a, a);
 }
 
 #[test]

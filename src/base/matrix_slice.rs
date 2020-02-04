@@ -249,6 +249,7 @@ macro_rules! matrix_slice_impl(
      $fixed_columns_with_step: ident,
      $columns_generic: ident,
      $columns_generic_with_step: ident,
+     $transposed_slice: ident,
      $slice: ident,
      $slice_with_steps: ident,
      $fixed_slice: ident,
@@ -433,6 +434,27 @@ macro_rules! matrix_slice_impl(
 
                 unsafe {
                     let data = $SliceStorage::new_with_strides_unchecked($data, (0, first_col), shape, strides);
+                    Matrix::from_data_statically_unchecked(data)
+                }
+            }
+
+            /*
+             *
+             * Transposed slicing.
+             *
+             */
+            /// Returns a slice containing the same values as `Self.transpose()` but without
+            /// copying.
+            #[inline]
+            pub fn $transposed_slice($me: $Me) -> $MatrixSlice<N, C, R, S::CStride, S::RStride> {
+                let my_shape   = $me.data.shape();
+                let my_strides = $me.data.strides();
+
+                let shape   = (my_shape.1,   my_shape.0);
+                let strides = (my_strides.1, my_strides.0);
+
+                unsafe {
+                    let data = $SliceStorage::new_with_strides_unchecked($data, (0, 0), shape, strides);
                     Matrix::from_data_statically_unchecked(data)
                 }
             }
@@ -635,6 +657,7 @@ matrix_slice_impl!(
      fixed_columns_with_step,
      columns_generic,
      columns_generic_with_step,
+     transposed_slice,
      slice,
      slice_with_steps,
      fixed_slice,
@@ -662,6 +685,7 @@ matrix_slice_impl!(
      fixed_columns_with_step_mut,
      columns_generic_mut,
      columns_generic_with_step_mut,
+     transposed_slice_mut,
      slice_mut,
      slice_with_steps_mut,
      fixed_slice_mut,
