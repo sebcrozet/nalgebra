@@ -12,3 +12,5 @@ mod solve;
 mod svd;
 mod tridiagonal;
 mod convolution;
+#[cfg(any(feature = "std", feature = "alloc"))]
+mod polar;

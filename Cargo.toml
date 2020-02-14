@@ -61,7 +61,7 @@ rand_isaac = "0.2"
 ### We can't just let this uncommented because that would break
 ### compilation for #[no-std] because of the terrible Cargo bug
 ### https://github.com/rust-lang/cargo/issues/4866
-#criterion = "0.2.10"
+criterion = "0.2.10"
 
 [workspace]
 members = [ "nalgebra-lapack", "nalgebra-glm" ]
