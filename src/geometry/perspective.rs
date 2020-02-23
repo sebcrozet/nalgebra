@@ -17,7 +17,7 @@ use crate::base::{Matrix4, Scalar, Vector, Vector3};
 
 use crate::geometry::{Point3, Projective3};
 
-/// A 3D perspective projection stored as an homogeneous 4x4 matrix.
+/// A 3D perspective projection stored as a homogeneous 4x4 matrix.
 pub struct Perspective3<N: Scalar> {
     matrix: Matrix4<N>,
 }
@@ -89,7 +89,7 @@ impl<N: RealField> Perspective3<N> {
 
     /// Wraps the given matrix to interpret it as a 3D perspective matrix.
     ///
-    /// It is not checked whether or not the given matrix actually represents an orthographic
+    /// It is not checked whether or not the given matrix actually represents a perspective
     /// projection.
     #[inline]
     pub fn from_matrix_unchecked(matrix: Matrix4<N>) -> Self {

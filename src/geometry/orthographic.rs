@@ -16,7 +16,7 @@ use crate::base::{Matrix4, Vector, Vector3};
 
 use crate::geometry::{Point3, Projective3};
 
-/// A 3D orthographic projection stored as an homogeneous 4x4 matrix.
+/// A 3D orthographic projection stored as a homogeneous 4x4 matrix.
 pub struct Orthographic3<N: RealField> {
     matrix: Matrix4<N>,
 }

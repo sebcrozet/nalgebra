@@ -51,7 +51,7 @@ an optimized set of tools for computer graphics and physics. Those features incl
   allocated on the heap.
 * Convenient aliases for low-dimensional matrices and vectors: `Vector1` to `Vector6` and
   `Matrix1x1` to `Matrix6x6`, including rectangular matrices like `Matrix2x5`.
-* Points sizes known at compile time, and convenience aliases:: `Point1` to `Point6`.
+* Points sizes known at compile time, and convenience aliases: `Point1` to `Point6`.
 * Translation (seen as a transformation that composes by multiplication): `Translation2`,
   `Translation3`.
 * Rotation matrices: `Rotation2`, `Rotation3`.
@@ -60,10 +60,10 @@ an optimized set of tools for computer graphics and physics. Those features incl
 * Algebraic entities with a norm equal to one: `Unit<T>`, e.g., `Unit<Vector3<f32>>`.
 * Isometries (translation ⨯ rotation): `Isometry2`, `Isometry3`
 * Similarity transformations (translation ⨯ rotation ⨯ uniform scale): `Similarity2`, `Similarity3`.
-* Affine transformations stored as an homogeneous matrix: `Affine2`, `Affine3`.
-* Projective (i.e. invertible) transformations stored as an homogeneous matrix: `Projective2`,
+* Affine transformations stored as a homogeneous matrix: `Affine2`, `Affine3`.
+* Projective (i.e. invertible) transformations stored as a homogeneous matrix: `Projective2`,
   `Projective3`.
-* General transformations that does not have to be invertible, stored as an homogeneous matrix:
+* General transformations that does not have to be invertible, stored as a homogeneous matrix:
   `Transform2`, `Transform3`.
 * 3D projections for computer graphics: `Perspective3`, `Orthographic3`.
 * Matrix factorizations: `Cholesky`, `QR`, `LU`, `FullPivLU`, `SVD`, `Schur`, `Hessenberg`, `SymmetricEigen`.
