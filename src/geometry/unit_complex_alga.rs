@@ -33,6 +33,7 @@ impl<N: RealField> AbstractMagma<Multiplicative> for UnitComplex<N> {
 
 impl<N: RealField> TwoSidedInverse<Multiplicative> for UnitComplex<N> {
     #[inline]
+    #[must_use = "Did you mean to use two_sided_inverse_mut()?"]
     fn two_sided_inverse(&self) -> Self {
         self.inverse()
     }

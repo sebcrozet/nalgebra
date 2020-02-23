@@ -31,6 +31,7 @@ impl<N: RealField, D: DimName> TwoSidedInverse<Multiplicative> for Rotation<N, D
 where DefaultAllocator: Allocator<N, D, D>
 {
     #[inline]
+    #[must_use = "Did you mean to use two_sided_inverse_mut()?"]
     fn two_sided_inverse(&self) -> Self {
         self.transpose()
     }

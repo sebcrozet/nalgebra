@@ -120,6 +120,7 @@ impl<N: RealField> Quaternion<N> {
     /// relative_eq!(q_normalized.norm(), 1.0);
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use normalize_mut()?"]
     pub fn normalize(&self) -> Self {
         Self::from(self.coords.normalize())
     }
@@ -140,6 +141,7 @@ impl<N: RealField> Quaternion<N> {
     /// assert!(conj.i == -2.0 && conj.j == -3.0 && conj.k == -4.0 && conj.w == 1.0);
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use conjugate_mut()?"]
     pub fn conjugate(&self) -> Self {
         Self::from_parts(self.w, -self.imag())
     }
@@ -163,6 +165,7 @@ impl<N: RealField> Quaternion<N> {
     /// assert!(inv_q.is_none());
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use try_inverse_mut()?"]
     pub fn try_inverse(&self) -> Option<Self> {
         let mut res = Self::from(self.coords.clone_owned());
 
@@ -974,6 +977,7 @@ impl<N: RealField> UnitQuaternion<N> {
     /// assert_eq!(conj, UnitQuaternion::from_axis_angle(&-axis, 1.78));
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use conjugate_mut()?"]
     pub fn conjugate(&self) -> Self {
         Self::new_unchecked(self.as_ref().conjugate())
     }
@@ -990,6 +994,7 @@ impl<N: RealField> UnitQuaternion<N> {
     /// assert_eq!(inv * rot, UnitQuaternion::identity());
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use inverse_mut()?"]
     pub fn inverse(&self) -> Self {
         self.conjugate()
     }

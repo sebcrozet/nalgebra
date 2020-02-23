@@ -130,6 +130,7 @@ where DefaultAllocator: Allocator<N, D>
     /// assert_eq!(t.inverse() * t, Translation2::identity());
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use inverse_mut()?"]
     pub fn inverse(&self) -> Translation<N, D>
     where N: ClosedNeg {
         Translation::from(-&self.vector)

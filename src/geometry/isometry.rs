@@ -144,6 +144,7 @@ where DefaultAllocator: Allocator<N, D>
     /// assert_eq!(inv * (iso * pt), pt);
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use inverse_mut()?"]
     pub fn inverse(&self) -> Self {
         let mut res = self.clone();
         res.inverse_mut();

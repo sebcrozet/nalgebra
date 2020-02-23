@@ -829,6 +829,7 @@ where
 impl<N: Scalar + ClosedAdd, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
     /// Adds a scalar to `self`.
     #[inline]
+    #[must_use = "Did you mean to use add_scalar_mut()?"]
     pub fn add_scalar(&self, rhs: N) -> MatrixMN<N, R, C>
     where DefaultAllocator: Allocator<N, R, C> {
         let mut res = self.clone_owned();

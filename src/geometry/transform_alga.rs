@@ -32,6 +32,7 @@ where
     DefaultAllocator: Allocator<N, DimNameSum<D, U1>, DimNameSum<D, U1>>,
 {
     #[inline]
+    #[must_use = "Did you mean to use two_sided_inverse_mut()?"]
     fn two_sided_inverse(&self) -> Self {
         self.clone().inverse()
     }

@@ -107,6 +107,7 @@ impl<N: RealField> UnitComplex<N> {
     /// assert_eq!(rot.complex().re, conj.complex().re);
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use conjugate_mut()?"]
     pub fn conjugate(&self) -> Self {
         Self::new_unchecked(self.conj())
     }
@@ -123,6 +124,7 @@ impl<N: RealField> UnitComplex<N> {
     /// assert_relative_eq!(inv * rot, UnitComplex::identity(), epsilon = 1.0e-6);
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use inverse_mut()?"]
     pub fn inverse(&self) -> Self {
         self.conjugate()
     }

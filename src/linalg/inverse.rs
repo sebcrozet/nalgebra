@@ -10,6 +10,7 @@ use crate::linalg::lu;
 impl<N: ComplexField, D: Dim, S: Storage<N, D, D>> SquareMatrix<N, D, S> {
     /// Attempts to invert this matrix.
     #[inline]
+    #[must_use = "Did you mean to use try_inverse_mut()?"]
     pub fn try_inverse(self) -> Option<MatrixN<N, D>>
     where DefaultAllocator: Allocator<N, D, D> {
         let mut me = self.into_owned();

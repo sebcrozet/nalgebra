@@ -610,6 +610,7 @@ impl<N: Scalar, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// Transposes `self`.
     #[inline]
+    #[must_use = "Did you mean to use transpose_mut()?"]
     pub fn transpose(&self) -> MatrixMN<N, C, R>
     where DefaultAllocator: Allocator<N, C, R> {
         let (nrows, ncols) = self.data.shape();
@@ -941,6 +942,7 @@ impl<N: ComplexField, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// The adjoint (aka. conjugate-transpose) of `self`.
     #[inline]
+    #[must_use = "Did you mean to use adjoint_mut()?"]
     pub fn adjoint(&self) -> MatrixMN<N, C, R>
     where DefaultAllocator: Allocator<N, C, R> {
         let (nrows, ncols) = self.data.shape();
@@ -976,6 +978,7 @@ impl<N: ComplexField, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// The conjugate of `self`.
     #[inline]
+    #[must_use = "Did you mean to use conjugate_mut()?"]
     pub fn conjugate(&self) -> MatrixMN<N, R, C>
         where DefaultAllocator: Allocator<N, R, C> {
         self.map(|e| e.conjugate())
@@ -983,6 +986,7 @@ impl<N: ComplexField, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// Divides each component of the complex matrix `self` by the given real.
     #[inline]
+    #[must_use = "Did you mean to use unscale_mut()?"]
     pub fn unscale(&self, real: N::RealField) -> MatrixMN<N, R, C>
         where DefaultAllocator: Allocator<N, R, C> {
         self.map(|e| e.unscale(real))
@@ -990,6 +994,7 @@ impl<N: ComplexField, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// Multiplies each component of the complex matrix `self` by the given real.
     #[inline]
+    #[must_use = "Did you mean to use scale_mut()?"]
     pub fn scale(&self, real: N::RealField) -> MatrixMN<N, R, C>
         where DefaultAllocator: Allocator<N, R, C> {
         self.map(|e| e.scale(real))

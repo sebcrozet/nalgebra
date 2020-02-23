@@ -51,6 +51,7 @@ where
     DefaultAllocator: Allocator<N, R, C>,
 {
     #[inline]
+    #[must_use = "Did you mean to use two_sided_inverse_mut()?"]
     fn two_sided_inverse(&self) -> Self {
         -self
     }
@@ -162,6 +163,7 @@ where DefaultAllocator: Allocator<N, R, C>
     }
 
     #[inline]
+    #[must_use = "Did you mean to use normalize_mut()?"]
     fn normalize(&self) -> Self {
         self.normalize()
     }
@@ -172,6 +174,7 @@ where DefaultAllocator: Allocator<N, R, C>
     }
 
     #[inline]
+    #[must_use = "Did you mean to use try_normalize_mut()?"]
     fn try_normalize(&self, min_norm: N::RealField) -> Option<Self> {
         self.try_normalize(min_norm)
     }

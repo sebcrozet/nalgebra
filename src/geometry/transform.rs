@@ -370,6 +370,7 @@ where DefaultAllocator: Allocator<N, DimNameSum<D, U1>, DimNameSum<D, U1>>
     /// assert!(t.try_inverse().is_none());
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use try_inverse_mut()?"]
     pub fn try_inverse(self) -> Option<Transform<N, D, C>> {
         if let Some(m) = self.matrix.try_inverse() {
             Some(Transform::from_matrix_unchecked(m))
@@ -395,6 +396,7 @@ where DefaultAllocator: Allocator<N, DimNameSum<D, U1>, DimNameSum<D, U1>>
     /// assert_relative_eq!(inv_t * proj, Projective2::identity());
     /// ```
     #[inline]
+    #[must_use = "Did you mean to use inverse_mut()?"]
     pub fn inverse(self) -> Transform<N, D, C>
     where C: SubTCategoryOf<TProjective> {
         // FIXME: specialize for TAffine?

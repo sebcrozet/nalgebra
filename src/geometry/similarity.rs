@@ -133,6 +133,7 @@ where
 
     /// Inverts `self`.
     #[inline]
+    #[must_use = "Did you mean to use inverse_mut()?"]
     pub fn inverse(&self) -> Self {
         let mut res = self.clone();
         res.inverse_mut();
@@ -166,6 +167,7 @@ where
 
     /// The similarity transformation that applies a scaling factor `scaling` before `self`.
     #[inline]
+    #[must_use = "Did you mean to use prepend_scaling_mut()?"]
     pub fn prepend_scaling(&self, scaling: N) -> Self {
         assert!(
             !relative_eq!(scaling, N::zero()),
@@ -177,6 +179,7 @@ where
 
     /// The similarity transformation that applies a scaling factor `scaling` after `self`.
     #[inline]
+    #[must_use = "Did you mean to use append_scaling_mut()?"]
     pub fn append_scaling(&self, scaling: N) -> Self {
         assert!(
             !relative_eq!(scaling, N::zero()),

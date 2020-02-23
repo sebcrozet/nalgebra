@@ -187,6 +187,7 @@ impl<N: ComplexField, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// Returns a normalized version of this matrix.
     #[inline]
+    #[must_use = "Did you mean to use normalize_mut()?"]
     pub fn normalize(&self) -> MatrixMN<N, R, C>
         where DefaultAllocator: Allocator<N, R, C> {
         self.unscale(self.norm())
@@ -194,6 +195,7 @@ impl<N: ComplexField, R: Dim, C: Dim, S: Storage<N, R, C>> Matrix<N, R, C, S> {
 
     /// Returns a normalized version of this matrix unless its norm as smaller or equal to `eps`.
     #[inline]
+    #[must_use = "Did you mean to use try_normalize_mut()?"]
     pub fn try_normalize(&self, min_norm: N::RealField) -> Option<MatrixMN<N, R, C>>
         where DefaultAllocator: Allocator<N, R, C> {
         let n = self.norm();
