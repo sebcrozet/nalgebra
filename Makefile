@@ -1,12 +1,17 @@
-all:
-	cargo test --features "debug arbitrary serde-serialize abomonation-serialize compare"
-	# cargo check --features "debug arbitrary serde-serialize"
+.PHONY: all
+all: test bench doc
 
+.PHONY: doc
 doc:
 	cargo doc --no-deps --features "debug arbitrary serde-serialize abomonation"
 
+.PHONY: bench
 bench:
-	cargo bench
+	cargo bench --features "rand"
 
-test:
-	cargo test --features "debug arbitrary serde-serialize abomonation-serialize compare"
+.PHONY: test-nalgebra
+test-nalgebra:
+	cargo test --features "arbitrary rand serde-serialize abomonation-serialize sparse debug io compare libm proptest-support slow-tests"
+
+.PHONY: test
+test: test-nalgebra
