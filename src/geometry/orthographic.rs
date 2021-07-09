@@ -18,6 +18,7 @@ use crate::base::{Matrix4, Vector, Vector3};
 use crate::geometry::{Point3, Projective3};
 
 /// A 3D orthographic projection stored as a homogeneous 4x4 matrix.
+#[repr(C)]
 pub struct Orthographic3<T: RealField> {
     matrix: Matrix4<T>,
 }
@@ -42,6 +43,22 @@ impl<T: RealField> PartialEq for Orthographic3<T> {
     fn eq(&self, right: &Self) -> bool {
         self.matrix == right.matrix
     }
+}
+
+#[cfg(feature = "bytemuck")]
+unsafe impl<T> bytemuck::Zeroable for Orthographic3<T>
+where
+    T: RealField + bytemuck::Zeroable,
+    Matrix4<T>: bytemuck::Zeroable,
+{
+}
+
+#[cfg(feature = "bytemuck")]
+unsafe impl<T> bytemuck::Pod for Orthographic3<T>
+where
+    T: RealField + bytemuck::Pod,
+    Matrix4<T>: bytemuck::Pod,
+{
 }
 
 #[cfg(feature = "serde-serialize-no-std")]

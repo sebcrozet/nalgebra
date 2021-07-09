@@ -83,6 +83,22 @@ where
     }
 }
 
+#[cfg(feature = "bytemuck")]
+unsafe impl<T, const D: usize> bytemuck::Zeroable for Rotation<T, D>
+where
+    T: Scalar + bytemuck::Zeroable,
+    SMatrix<T, D, D>: bytemuck::Zeroable,
+{
+}
+
+#[cfg(feature = "bytemuck")]
+unsafe impl<T, const D: usize> bytemuck::Pod for Rotation<T, D>
+where
+    T: Scalar + bytemuck::Pod,
+    SMatrix<T, D, D>: bytemuck::Pod,
+{
+}
+
 #[cfg(feature = "abomonation-serialize")]
 impl<T, const D: usize> Abomonation for Rotation<T, D>
 where
