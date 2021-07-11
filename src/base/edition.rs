@@ -10,7 +10,9 @@ use crate::base::allocator::{Allocator, Reallocator};
 use crate::base::constraint::{DimEq, SameNumberOfColumns, SameNumberOfRows, ShapeConstraint};
 #[cfg(any(feature = "std", feature = "alloc"))]
 use crate::base::dimension::Dynamic;
-use crate::base::dimension::{Const, Dim, DimAdd, DimDiff, DimMin, DimMinimum, DimSub, DimSum, U1};
+use crate::base::dimension::{
+    Const, Dim, DimAdd, DimDiff, DimMin, DimMinimum, DimMul, DimName, DimProd, DimSub, DimSum, U1,
+};
 use crate::base::storage::{ContiguousStorageMut, ReshapableStorage, Storage, StorageMut};
 use crate::base::{DefaultAllocator, Matrix, OMatrix, RowVector, Scalar, Vector};
 
@@ -327,7 +329,7 @@ impl<T: Scalar, R: Dim, C: Dim, S: Storage<T, R, C>> Matrix<T, R, C, S> {
         self.remove_fixed_columns::<1>(i)
     }
 
-    /// Removes all columns in `indices`   
+    /// Removes all columns in `indices`
     #[cfg(any(feature = "std", feature = "alloc"))]
     pub fn remove_columns_at(self, indices: &[usize]) -> OMatrix<T, R, Dynamic>
     where
@@ -361,7 +363,7 @@ impl<T: Scalar, R: Dim, C: Dim, S: Storage<T, R, C>> Matrix<T, R, C, S> {
         }
     }
 
-    /// Removes all rows in `indices`   
+    /// Removes all rows in `indices`
     #[cfg(any(feature = "std", feature = "alloc"))]
     pub fn remove_rows_at(self, indices: &[usize]) -> OMatrix<T, Dynamic, C>
     where
@@ -894,6 +896,110 @@ impl<T: Scalar, R: Dim, C: Dim, S: Storage<T, R, C>> Matrix<T, R, C, S> {
     {
         let data = self.data.reshape_generic(new_nrows, new_ncols);
         Matrix::from_data(data)
+    }
+
+    ///
+    /// Concatenates the columns of this matrix together to form a vector of
+    /// dimension `self.nrows() * self.ncols()`.
+    ///
+    /// Note that since matrices in `nalgebra` are all column major, this can be done
+    /// most of the time in place without copies or moves. This is done with more or less
+    /// the same logic as in [`Matrix::reshape_generic()`].
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use nalgebra::{Matrix2x3, Vector6, DMatrix, DVector};
+    ///
+    /// let m = Matrix2x3::new(
+    ///    1.1, 1.2, 1.3,
+    ///    2.1, 2.2, 2.3
+    /// );
+    /// let v = Vector6::new(1.1, 2.1, 1.2, 2.2, 1.3, 2.3);
+    /// assert_eq!(m.flatten_by_columns(), v);
+    ///
+    /// let dm = DMatrix::from_row_slice(
+    ///     4, 3,
+    ///     &[
+    ///         1.1, 1.2, 1.3,
+    ///         2.1, 2.2, 2.3,
+    ///         3.1, 3.2, 3.3,
+    ///         4.1, 4.2, 4.3
+    ///     ],
+    /// );
+    /// let dv = DVector::from_row_slice(
+    ///     &[1.1, 2.1, 3.1, 4.1, 1.2, 2.2, 3.2, 4.2, 1.3, 2.3, 3.3, 4.3]
+    /// );
+    /// assert_eq!(dm.flatten_by_columns(), dv);
+    /// ```
+    ///
+    pub fn flatten_by_columns(self) -> Matrix<T, DimProd<R, C>, U1, S::Output>
+    where
+        R: DimMul<C>,
+        S: ReshapableStorage<T, R, C, DimProd<R, C>, U1>,
+    {
+        let (r, c) = self.data.shape();
+        self.reshape_generic(r.mul(c), U1::name())
+    }
+
+    ///
+    /// Concatenates the rows of this matrix together to form a vector of
+    /// dimension `self.nrows() * self.ncols()`.
+    ///
+    /// Note that since matrices in `nalgebra` are all column major, each entry
+    /// must be copied/moved into into its new position. As such, this method has a fair bit more
+    /// overhead than [`Matrix::flatten_by_columns()`] does.
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// # use nalgebra::{Matrix2x3, Vector6, DMatrix, DVector};
+    ///
+    /// let m = Matrix2x3::new(
+    ///    1.1, 1.2, 1.3,
+    ///    2.1, 2.2, 2.3
+    /// );
+    /// let v = Vector6::new(1.1, 1.2, 1.3, 2.1, 2.2, 2.3);
+    /// assert_eq!(m.flatten_by_rows(), v);
+    ///
+    /// let dm = DMatrix::from_row_slice(
+    ///     4, 3,
+    ///     &[
+    ///         1.1, 1.2, 1.3,
+    ///         2.1, 2.2, 2.3,
+    ///         3.1, 3.2, 3.3,
+    ///         4.1, 4.2, 4.3
+    ///     ],
+    /// );
+    /// let dv = DVector::from_row_slice(
+    ///     &[1.1, 1.2, 1.3, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 4.1, 4.2, 4.3]
+    /// );
+    /// assert_eq!(dm.flatten_by_rows(), dv);
+    /// ```
+    ///
+    pub fn flatten_by_rows(self) -> OMatrix<T, DimProd<R, C>, U1>
+    where
+        R: DimMul<C>,
+        DefaultAllocator: Allocator<T, DimProd<R, C>, U1>,
+    {
+        let (nrows, ncols) = self.data.shape();
+
+        //Theoretically, we could do this by composing transpose() and flatten_by_columns(),
+        //but doing so unnecessarily complicates the generic bounds on this function
+        unsafe {
+            let mut res =
+                crate::unimplemented_or_uninitialized_generic!(nrows.mul(ncols), U1::name());
+
+            //TODO: optimize with the same optimization transpose_to() gets
+            for i in 0..nrows.value() {
+                for j in 0..ncols.value() {
+                    *res.get_unchecked_mut(i * ncols.value() + j) =
+                        self.get_unchecked((i, j)).inlined_clone();
+                }
+            }
+
+            res
+        }
     }
 }
 
