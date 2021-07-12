@@ -30,6 +30,13 @@ pub trait Allocator<T: Scalar, R: Dim, C: Dim = U1>: Any + Sized {
         ncols: C,
         iter: I,
     ) -> Self::Buffer;
+
+    /// Allocates a buffer initialized with the content of the given row-major order iterator.
+    fn allocate_from_row_iterator<I: IntoIterator<Item = T>>(
+        nrows: R,
+        ncols: C,
+        iter: I,
+    ) -> Self::Buffer;
 }
 
 /// A matrix reallocator. Changes the size of the memory buffer that initially contains (RFrom ×

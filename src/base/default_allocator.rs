@@ -65,6 +65,40 @@ impl<T: Scalar, const R: usize, const C: usize> Allocator<T, Const<R>, Const<C>>
 
         res
     }
+
+    #[inline]
+    fn allocate_from_row_iterator<I: IntoIterator<Item = T>>(
+        nrows: Const<R>,
+        ncols: Const<C>,
+        iter: I,
+    ) -> Self::Buffer {
+        #[cfg(feature = "no_unsound_assume_init")]
+        let mut res: Self::Buffer = unimplemented!();
+        #[cfg(not(feature = "no_unsound_assume_init"))]
+        let mut res = unsafe { Self::allocate_uninitialized(nrows, ncols).assume_init() };
+        let mut count = 0;
+        let res_ptr = res.as_mut_slice();
+
+        for (i, e) in iter
+            .into_iter()
+            .take(ncols.value() * nrows.value())
+            .enumerate()
+        {
+            unsafe {
+                *res_ptr
+                    .get_unchecked_mut((i % ncols.value()) * nrows.value() + i / ncols.value()) = e;
+            }
+            // res_ptr[(i % ncols.value()) * nrows.value() + i / ncols.value()] = e;
+            count += 1;
+        }
+
+        assert!(
+            count == nrows.value() * ncols.value(),
+            "Matrix init. from row iterator: iterator not long enough."
+        );
+
+        res
+    }
 }
 
 // Dynamic - Static
@@ -96,6 +130,32 @@ impl<T: Scalar, C: Dim> Allocator<T, Dynamic, C> for DefaultAllocator {
 
         VecStorage::new(nrows, ncols, res)
     }
+
+    #[inline]
+    fn allocate_from_row_iterator<I: IntoIterator<Item = T>>(
+        nrows: Dynamic,
+        ncols: C,
+        iter: I,
+    ) -> Self::Buffer {
+        let it = iter.into_iter().take(nrows.value() * ncols.value());
+        let mut res: Vec<T> = Vec::with_capacity(nrows.value() * ncols.value());
+        let res_ptr = res.as_mut_ptr();
+        let mut count = 0;
+
+        unsafe {
+            for (i, e) in it.enumerate() {
+                *res_ptr.add((i % ncols.value()) * nrows.value() + i / ncols.value()) = e;
+                count += 1;
+            }
+            res.set_len(nrows.value() * ncols.value());
+        }
+        assert!(
+            count == nrows.value() * ncols.value(),
+            "Matrix init. from row iterator: iterator not long enough."
+        );
+
+        VecStorage::new(nrows, ncols, res)
+    }
 }
 
 // Static - Dynamic
@@ -123,6 +183,32 @@ impl<T: Scalar, R: DimName> Allocator<T, R, Dynamic> for DefaultAllocator {
         let res: Vec<T> = it.collect();
         assert!(res.len() == nrows.value() * ncols.value(),
                 "Allocation from iterator error: the iterator did not yield the correct number of elements.");
+
+        VecStorage::new(nrows, ncols, res)
+    }
+
+    #[inline]
+    fn allocate_from_row_iterator<I: IntoIterator<Item = T>>(
+        nrows: R,
+        ncols: Dynamic,
+        iter: I,
+    ) -> Self::Buffer {
+        let it = iter.into_iter().take(nrows.value() * ncols.value());
+        let mut res: Vec<T> = Vec::with_capacity(nrows.value() * ncols.value());
+        let res_ptr = res.as_mut_ptr();
+        let mut count = 0;
+
+        unsafe {
+            for (i, e) in it.enumerate() {
+                *res_ptr.add((i % ncols.value()) * nrows.value() + i / ncols.value()) = e;
+                count += 1;
+            }
+            res.set_len(nrows.value() * ncols.value());
+        }
+        assert!(
+            count == nrows.value() * ncols.value(),
+            "Matrix init. from row iterator: iterator not long enough."
+        );
 
         VecStorage::new(nrows, ncols, res)
     }

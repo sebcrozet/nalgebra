@@ -97,6 +97,17 @@ where
         Self::from_data(DefaultAllocator::allocate_from_iterator(nrows, ncols, iter))
     }
 
+    /// Creates a matrix with all its elements filled by an row-major order iterator.
+    #[inline]
+    pub fn from_row_iterator_generic<I>(nrows: R, ncols: C, iter: I) -> Self
+    where
+        I: IntoIterator<Item = T>,
+    {
+        Self::from_data(DefaultAllocator::allocate_from_row_iterator(
+            nrows, ncols, iter,
+        ))
+    }
+
     /// Creates a matrix with its elements filled with the components provided by a slice in
     /// row-major order.
     ///
@@ -488,6 +499,36 @@ macro_rules! impl_constructors(
         pub fn from_iterator<I>($($args: usize,)* iter: I) -> Self
             where I: IntoIterator<Item = T> {
             Self::from_iterator_generic($($gargs, )* iter)
+        }
+
+        /// Creates a matrix or vector with all its elements filled by a row-major iterator.
+        ///
+        /// The output matrix is filled row-by-row.
+        ///
+        /// ## Example
+        /// ```
+        /// # use nalgebra::{Matrix2x3, Vector3, DVector, DMatrix};
+        /// # use std::iter;
+        ///
+        /// let v = Vector3::from_row_iterator((0..3).into_iter());
+        /// // The additional argument represents the vector dimension.
+        /// let dv = DVector::from_row_iterator(3, (0..3).into_iter());
+        /// let m = Matrix2x3::from_row_iterator((0..6).into_iter());
+        /// // The two additional arguments represent the matrix dimensions.
+        /// let dm = DMatrix::from_row_iterator(2, 3, (0..6).into_iter());
+        ///
+        /// // For Vectors from_row_iterator is identical to from_iterator
+        /// assert!(v.x == 0 && v.y == 1 && v.z == 2);
+        /// assert!(dv[0] == 0 && dv[1] == 1 && dv[2] == 2);
+        /// assert!(m.m11 == 0 && m.m12 == 1 && m.m13 == 2 &&
+        ///         m.m21 == 3 && m.m22 == 4 && m.m23 == 5);
+        /// assert!(dm[(0, 0)] == 0 && dm[(0, 1)] == 1 && dm[(0, 2)] == 2 &&
+        ///         dm[(1, 0)] == 3 && dm[(1, 1)] == 4 && dm[(1, 2)] == 5);
+        /// ```
+        #[inline]
+        pub fn from_row_iterator<I>($($args: usize,)* iter: I) -> Self
+            where I: IntoIterator<Item = T> {
+            Self::from_row_iterator_generic($($gargs, )* iter)
         }
 
         /// Creates a matrix or vector filled with the results of a function applied to each of its
